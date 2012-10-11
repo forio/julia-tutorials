@@ -125,3 +125,7 @@ function summary(self::ols)
     println("BIC Criterion        $bic         Kurtosis:           ?")
     println("========================================================================================")
 end
+
+function linreg{T<:Number}(X::StridedVecOrMat{T}, y::Vector{T})
+    hcat(ones(T, size(X,1)), X)\y
+end
