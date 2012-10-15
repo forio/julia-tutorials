@@ -14,7 +14,7 @@ command_module = Command_Module(MCM, INITIAL_VELOCITY, 5.0, INITIAL_POSITION, IN
 world = System(0.0, earth, moon, command_module)
 
 function simulate()
-    boost = -10. # m/s Change this to the correct value from the list above after everything else is done.
+    boost = 15. # m/s Change this to the correct value from the list above after everything else is done.
     position_list = Vector{Float64}[] # m
     current_time = 1.
     h = 0.1 # s, set as initial step size right now but will store current step size
@@ -57,4 +57,5 @@ function simulate()
 end
 println("starting")
 @time pos = simulate()
+println(typeof(pos))
 csvwrite("output.csv", pos)
