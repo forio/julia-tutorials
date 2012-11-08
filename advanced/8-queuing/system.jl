@@ -1,17 +1,17 @@
-function random_gaussian(mean::Real, std_dev::Real)
+function random_gaussian(mean::Float64, std_dev::Float64)
     mean + (rand() - 0.5) * std_dev
 end
 
 type Queuing_System
     ## These variables are set directly by the creator
-    arrival_times::Array{Real,1}
-    service_times::Array{Real,1}
-    warm_up_time::Real
-    run_time::Real
+    arrival_times::Array{Float64,1}
+    service_times::Array{Float64,1}
+    warm_up_time::Float64
+    run_time::Float64
     servers::Int
 
     ## Internal variables - Set by constructor
-    sim_time::Real
+    sim_time::Float64
     warmed_up::Bool
     in_system::Int
     arrival_index::Int
@@ -19,15 +19,15 @@ type Queuing_System
 
     next_to_complete::Int
     open_server::Int
-    next_completion::Array{Real,1} ## by server
-    next_arrival::Real
-    next_exit::Real
+    next_completion::Array{Float64,1} ## by server
+    next_arrival::Float64
+    next_exit::Float64
     
     # Constructor definition
     function Queuing_System(arrival_times::Array{Float64,1},
                             service_times::Array{Float64,1},
-                            warm_up_time::Real,
-                            run_time::Real,
+                            warm_up_time::Float64,
+                            run_time::Float64,
                             servers::Int)
         sim_time = 0.0
         warmed_up = false
