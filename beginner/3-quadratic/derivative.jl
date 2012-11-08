@@ -1,5 +1,5 @@
 function derivative(fn)
-    return x ->begin
+    return function(x)
         h = x == 0 ? sqrt(eps(Float64)) : sqrt(eps(Float64)) * x
        
 		 xph = x + h
