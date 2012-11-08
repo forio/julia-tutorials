@@ -48,7 +48,7 @@ for i=1:max_arrivals
 end
 
 # Create our new queuing system
-Queuing_System qs = Queuing_System(arrival_times, service_times, warm_up_time, run_time, num_servers)
+qs = Queuing_System(arrival_times, service_times, warm_up_time, run_time, num_servers)
 
 # Run the simulation
 run_to_end(qs)
