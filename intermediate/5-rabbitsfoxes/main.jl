@@ -4,7 +4,7 @@ end_time = 100
 
 #How much time passes between each successive calculation
 time_step = 1/4 # years
-end_step = convert(Int,round(((end_time-start_time)/time_step)))
+end_step = int(((end_time-start_time)/time_step))
 
 initial_rabbits = 30000 #The number of rabbits when the simulation is started. (Rabbits)
 initial_foxes = 15 #The number of foxes when the simulation is started (Foxes)
