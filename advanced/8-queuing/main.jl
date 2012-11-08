@@ -27,8 +27,8 @@ std_dev_iat = mean_iat * coeff_of_variance
 
 # Initialize some empty vectors to hold our arrival rates
 # and service times
-arrival_times = []
-service_times = []
+arrival_times = Float64[]
+service_times = Float64[]
 
 max_arrivals = 15000 # simulate for no more than 15,000 customers
 prev_arrival = 0 # first arrival is at time = 0
@@ -43,8 +43,8 @@ for i=1:max_arrivals
 
     # Equivalent to push(arrival_times, prev_arrival)
     # Push our random values into an array
-    arrival_times = [arrival_times, prev_arrival]
-    service_times = [service_times, prev_los]
+    arrival_times = push(arrival_times, prev_arrival)
+    service_times = push(service_times, prev_los)
 end
 
 # Create our new queuing system
