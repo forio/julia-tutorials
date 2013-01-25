@@ -1,4 +1,4 @@
-load("ols.jl")
+require("ols.jl")
 
 data = csvread("gasoline.csv")
 

@@ -1,11 +1,11 @@
 # Problem: Save the Apollo 13 Astronauts
 
-load("types.jl")
-load("constants.jl")
-load("physics.jl")
-load("moon.jl")
-load("command-module.jl")
-load("system.jl")
+require("types.jl")
+require("constants.jl")
+require("physics.jl")
+require("moon.jl")
+require("command-module.jl")
+require("system.jl")
 
 # initialization of our bodies
 earth = Body(ME, [0.0, 0.0], RE, ORIGIN)

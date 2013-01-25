@@ -1,1 +1,1 @@
-load("hello.jl")
+require("hello.jl")
