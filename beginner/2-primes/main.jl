@@ -9,7 +9,7 @@ function is_prime(n::Int64)
 
 	i = 3	
 
-	while i < sqrt(n)
+	while i <= sqrt(n)
 		if is_divisible(n, i)
 			return false
 		end	
