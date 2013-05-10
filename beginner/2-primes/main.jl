@@ -1,23 +1,28 @@
 function is_divisible(dividend, divisor)
-	return dividend % divisor == 0
+    return dividend % divisor == 0
 end
 
 function is_prime(n::Int64)
-	if is_divisible(n, 2)
-		return false
-	end
+    if n <= 3
+        return true
+    end
 
-	i = 3	
+    if n % 2 == 0
+        return false
+    end
+    
+    # initialize a counter variable
+    i = 3
+    
+    while i <= sqrt(n)
+        if n % i == 0
+            return false
+        end
+        
+        i += 2
+    end
 
-	while i <= sqrt(n)
-		if is_divisible(n, i)
-			return false
-		end	
-
-		i += 2
-	end
-
-	return true
+    return true
 end
 
 print(is_prime(10002021))
