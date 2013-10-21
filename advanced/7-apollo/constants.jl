@@ -1,3 +1,8 @@
+module constants
+
+export ME, RE, G, MM, RM, MCM, DISTANCE_TO_MOON, MOON_PERIOD, MOON_INITIAL_ANGLE, ORIGIN
+export TOTAL_DURATION, MARKER_TIME, TOLERANCE, INITIAL_POSITION, INITIAL_VELOCITY
+
 const ME = 5.97e24 # mass of earth in kg
 const RE = 6.378e6 # radius of earth in m (at equator)
 const G = 6.67e-11 # gravitational constant in m3 / kg s2
@@ -15,3 +20,5 @@ const TOLERANCE = 100000. # (used in error correction) m
 
 const INITIAL_POSITION = [-6.701e6, 0.] # Initial vector for the spacecraft in m
 const INITIAL_VELOCITY = [0., -10.818e3] # Initial velocity for spacecraft in m/s
+
+end

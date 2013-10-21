@@ -1,17 +1,17 @@
 # Problem: Save the Apollo 13 Astronauts
 
-require("types.jl")
-require("constants.jl")
-require("physics.jl")
-require("moon.jl")
-require("command-module.jl")
-require("system.jl")
+using types
+using constants
+include("physics.jl")
+include("moon.jl")
+include("command-module.jl")
+include("system.jl")
 
 # initialization of our bodies
 earth = Body(ME, [0.0, 0.0], RE, ORIGIN)
 moon = Moon(MM, [0., 0.], RM, moon_position(0.0))
 command_module = Command_Module(MCM, INITIAL_VELOCITY, 5.0, INITIAL_POSITION, INITIAL_POSITION, INITIAL_POSITION, INITIAL_VELOCITY, INITIAL_VELOCITY)
-world = System(0.0, earth, moon, command_module)
+world = EarthMoonSystem(0.0, earth, moon, command_module)
 
 function simulate()
     boost = 15. # m/s Change this to the correct value from the list above after everything else is done.
@@ -50,7 +50,7 @@ function simulate()
         current_time += h
         h = h_new
 
-        push(position_list, copy(world.command_module.position))
+        push!(position_list, copy(world.command_module.position))
     end
 
     return position_list
@@ -58,4 +58,4 @@ end
 println("starting")
 @time pos = simulate()
 println(typeof(pos))
-csvwrite("output.csv", pos)
+writecsv("output.csv", pos)

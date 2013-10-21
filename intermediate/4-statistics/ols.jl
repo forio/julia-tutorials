@@ -1,3 +1,7 @@
+module ols
+
+export tols, summary
+
 # Author: Adam Savitzky
 # Email: asavitzky@forio.com
 # Github: github.com/adambom
@@ -24,28 +28,28 @@
 ### F-Statistic: reg.F
 ### Summary: summary(reg)
 
-type ols
-    y::Array{Float}
-    x::Array{Float}
+type tols
+    y::Array{Float64}
+    x::Array{Float64}
     y_varnm::String
     x_varnm::Array{String, 1}
-    inv_xx::Array{Float}
-    b::Array{Float, 1}
+    inv_xx::Array{Float64}
+    b::Array{Float64, 1}
     nobs::Int
     ncoef::Int
     df_e::Int
     df_r::Int
     er::Array
-    sse::Float
-    se::Array{Float, 1}
-    t::Array{Float}
+    sse::Float64
+    se::Array{Float64, 1}
+    t::Array{Float64}
     #p::Array
-    R2::Float
-    R2adj::Float
-    F::Float
-    #Fpv::Float
+    R2::Float64
+    R2adj::Float64
+    F::Float64
+    #Fpv::Float64
     
-    function ols(y, x, y_varnm, x_varnm)
+    function tols(y, x, y_varnm, x_varnm)
         x = hcat(ones(size(x, 1)), x)
         xT = transpose(x)
 
@@ -74,14 +78,14 @@ type ols
     end
 end
 
-function dw(self::ols)
+function dw(self::tols)
     # Calculates the Durbin-Waston statistic
     de = self.er - 1.
     result = dot(de, de) / dot(self.er, self.er)
     return result
 end
 
-function ll(self::ols)
+function ll(self::tols)
     # Calculate model log-likelihood and two information criteria
         
     # Model log-likelihood, AIC, and BIC criterion values 
@@ -92,7 +96,7 @@ function ll(self::ols)
     return loglike, aic, bic
 end
 
-function summary(self::ols)
+function summary(self::tols)
     # print model output to screen
 
     t = time()
@@ -128,4 +132,6 @@ end
 
 function linreg{T<:Number}(X::StridedVecOrMat{T}, y::Vector{T})
     hcat(ones(T, size(X,1)), X)\y
+end
+
 end

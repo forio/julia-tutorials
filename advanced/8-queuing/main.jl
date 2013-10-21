@@ -1,18 +1,18 @@
-require("system.jl")
+using queuingSystem
 
 ## USER DECISIONS
 
-warm_up_time = 4320.0
+warm_up_time = 43.0
 run_time = 20160.0
 
 # Standard Deviation = Mean * Coefficient of Variance
 coeff_of_variance = 1
 
 # Average Arrival Time
-mean_iat = 3
+mean_iat = 3.0
 
 # Average length of service
-mean_los = 9
+mean_los = 9.0
 
 # Number of servers
 num_servers = 4
@@ -43,8 +43,8 @@ for i=1:max_arrivals
 
     # Equivalent to push(arrival_times, prev_arrival)
     # Push our random values into an array
-    arrival_times = push(arrival_times, prev_arrival)
-    service_times = push(service_times, prev_los)
+    arrival_times = push!(arrival_times, prev_arrival)
+    service_times = push!(service_times, prev_los)
 end
 
 # Create our new queuing system

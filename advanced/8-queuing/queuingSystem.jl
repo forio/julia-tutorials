@@ -1,3 +1,7 @@
+module queuingSystem
+
+export random_gaussian, Queuing_System, run_to_end
+
 function random_gaussian(mean::Float64, std_dev::Float64)
     mean + (rand() - 0.5) * std_dev
 end
@@ -99,14 +103,11 @@ function next_event(qs::Queuing_System)
         if qs.in_system <= qs.servers
             # When will the available server finish processing its next customer?
             qs.next_completion[qs.open_server] = qs.sim_time + next_service(qs)
-            speak(qs, strcat("Customer arrived at server ", 
-                                            qs.open_server, 
-                                       " will be done at ", 
-                       qs.next_completion[qs.open_server]))
+            speak(qs, "Customer arrived at server $(qs.open_server) will be done at $(qs.next_completion[qs.open_server])")
         else
             # In the case where we have more customers in the system than servers
             # Customers will have to wait in queue
-            speak(qs,"Customer arrived at an is waiting in line")  
+            speak(qs,"Customer arrived and is waiting in line")
         end
         
     else
@@ -121,13 +122,13 @@ function next_event(qs::Queuing_System)
         # Set this to a dummy value for now
         qs.next_completion[qs.next_to_complete] = typemax(Int)        
 
-        speak(qs, strcat("Person exited from server ", qs.next_to_complete)) 
+        speak(qs, "Person exited from server $(qs.next_to_complete)")
 
         # If we have more customers in the system than servers
         if qs.in_system >= qs.servers
             # When will the next available server finish processing its current customer?
             qs.next_completion[qs.next_to_complete] = qs.sim_time + next_service(qs)
-            speak(qs,strcat("Customer exited line to see server ", qs.next_to_complete, " will be done at ", qs.next_completion[qs.next_to_complete]))
+            speak(qs,"Customer exited line to see server $(qs.next_to_complete) will be done at $(qs.next_completion[qs.next_to_complete])")
         end
     end
 
@@ -169,7 +170,9 @@ end
 
 # Outputs time and a message
 function speak(qs::Queuing_System, words::String)
-    if qs.warmed_up 
-        println(strcat(qs.sim_time, ": ", words))
+    if qs.warmed_up
+        println("$(qs.sim_time) : $words")
     end
+end
+
 end

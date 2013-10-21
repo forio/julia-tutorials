@@ -1,1 +1,1 @@
-require("hello.jl")
+include("hello.jl")
