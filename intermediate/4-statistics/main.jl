@@ -1,15 +1,14 @@
-using ols
-
 data = readcsv("gasoline.csv")
 
-# Get the columns that correspond with our X values 
+# Get the columns that correspond with our X values
 # and create a new matrix to hold them
 # syntax: data[row, column]
-# to get a whole column do data[:, column]
 # to get a whole row do data[row, :]
-x = [data[:,2] data[:,3] data[:,4]]
-y = data[:,6]
+# to get a whole column do data[:, column]
+# to get a range of columns do data[:, column_a:column_b]
 
-# Create a new OLS object
-reg = tols(y, x, "Octane Rating", ["Error", "Component 1", "Component 2", "Component 3"])
-summary(reg)
+x = data[:, 2:4]
+y = data[:, 6]
+
+# Call linreg
+coefs = linreg(x, y)

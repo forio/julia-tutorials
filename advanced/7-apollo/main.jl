@@ -1,7 +1,7 @@
 # Problem: Save the Apollo 13 Astronauts
 
-using types
 using constants
+using types
 include("physics.jl")
 include("moon.jl")
 include("command-module.jl")
