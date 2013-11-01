@@ -1,3 +1,5 @@
+# This code and all turorial code can be found on https://github.com/forio/julia-tutorials
+
 #Time parameters
 start_time = 0
 end_time = 100
