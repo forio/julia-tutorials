@@ -1,3 +1,5 @@
+# This code and all turorial code can be found on https://github.com/forio/julia-tutorials
+
 function is_divisible(dividend, divisor)
     return dividend % divisor == 0
 end
