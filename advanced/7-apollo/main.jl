@@ -1,3 +1,5 @@
+# This code and all turorial code can be found on https://github.com/forio/julia-tutorials
+
 # Problem: Save the Apollo 13 Astronauts
 
 using constants
