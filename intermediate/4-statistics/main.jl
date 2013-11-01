@@ -1,3 +1,5 @@
+# This code and all turorial code can be found on https://github.com/forio/julia-tutorials
+
 data = readcsv("gasoline.csv")
 
 # Get the columns that correspond with our X values
