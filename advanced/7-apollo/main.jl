@@ -4,7 +4,6 @@
 
 using constants
 using types
-include("physics.jl")
 include("moon.jl")
 include("command-module.jl")
 include("system.jl")
@@ -60,4 +59,4 @@ end
 println("starting")
 @time pos = simulate()
 println(typeof(pos))
-writecsv("output.csv", pos)
+writecsv("output3.csv", pos)
