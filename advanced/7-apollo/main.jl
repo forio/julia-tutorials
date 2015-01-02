@@ -4,7 +4,6 @@
 
 using constants
 using types
-include("physics.jl")
 include("moon.jl")
 include("command-module.jl")
 include("system.jl")
